@@ -1,0 +1,5 @@
+
+- What do we do about redefinition of consts in xpcshell-eval-region?  Does the
+  script stop being evaluated after this point?
+
+- 
