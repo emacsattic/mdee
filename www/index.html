@@ -33,7 +33,184 @@
 <!-- ***************** INFO/NEWS *************** -->
 
 <!-- MAIN CONTENT -->
-<p>The <strong>mdee</strong> project content goes here.</p>
 
-<p><strong>Note:</strong> If you want to add an area for user feedback to any of your pages, take a look at the <a href="notes.html">notes.html</a>
-template.</p>
+<h1>Mozilla Development Environment for Emacs (MDEE)</h1>
+
+<h2>Overview:</h2>
+
+<!--BEGIN ARTICLE BODY-->
+<p>
+    For the last few weeks I have been hard at work trying to get a working copy of
+    <a href="http://www.peerfear.org/newsmonster">NewsMonster</a>  ready to be used by the masses.  This means that <b>all</b> of the
+    issues reported by users are going to need to be resolved which means I need
+    solid Mozilla integration.
+
+</p>
+
+<p>
+    The only problem is that I am spoiled by the excellent IDE support within Emacs
+    for Java thanks to the JDEE <a href="http://jdee.sunsite.dk/">project</a> .  There really isn't a lot of support
+    within Emacs for Mozilla technologies.
+
+</p>
+
+<p>
+    To that end I have started to work on integration within Emacs for Mozilla.  I
+    think I have made fairly good progress.
+
+</p>
+
+<p>
+    Here is what I want:
+
+</p>
+
+<p>
+    <li>
+        Full and seamless support for running and evaluating javascript from within
+        Emacs.
+    </li>
+
+</p>
+
+<p>
+    <li>
+        XPCOM support including the creating and use of components. (WORKING) 
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Ability to use the javascript debugger. (WORKING for introspection)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Ability to use network IO (There is currently a <a href="http://bugzilla.mozilla.org/show_bug.cgi?id=56398">bug</a>  for this in Bugzilla.
+        Help would be appreciated!)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Ability to set breakpoints from within the editor and have them visible to the
+        user with the new display capabilities available in Emacs 21.  We should also
+        potentially add support for lisp breakpoints if this is possible.
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Full semantic bovinator support for javascript files.  (We need a bnf file for
+        javascript support.  I am REALLY hoping someone can help out here).
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Distribution of javascript-mode.el for users who don't have this available. (WORKING)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Chrome editing support with completion of chrome:// URLs with transparent
+        update of .jar files in the chrome dir.
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Ability to run standalone within a UNIX console and still function correctly
+        with all the MDEE commands we need. (EASY)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Full object browser support (and within ECB) of the the current scope and any
+        object properties. (TESTING)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Full ECB integration (This requires some change to the ECB that I am going to
+        make in the near future)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        XEmacs and OSX support (OSX might be a problem because xpcshell creates a
+        window and doesn't use stdin and stdout.  We will need to get this fixed.)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Full introspection support including the ability to <i>"pretty print"</i> a variable
+        and all its properties. (WORKING)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Ability to display the scope (WORKING) 
+    </li>
+
+</p>
+
+<p>
+    <li>
+        IDL docindex support so that users can resolve (with completion) symbols such
+        as <i>"nsIRequest"</i> and have these map to the file automatically. (WORKING)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        comint mode support for a xpcshell console (WORKING)
+    </li>
+
+</p>
+
+<p>
+    <li>
+        Ability to fully init Mozilla from XPCOM and play with the XUL environment. (I
+        have no idea if this is even possible but it would be cool!)
+    </li>
+
+</p>
+
+<h2>Download and Install</h2>
+
+Currently the MDEE is only available from CVS.
+
+<pre>
+    burton@universe:~/tmp
+    > export CVSROOT=:pserver:anoncvs@www.peerfear.org:/usr/src/cvsroot
+
+    burton@universe:~/tmp
+    > cvs login 
+    (Logging in to anoncvs@www.peerfear.org)
+    CVS password: anoncvs
+
+    burton@universe:~/tmp
+    > cvs checkout mdee
+</pre>
+
