@@ -233,6 +233,39 @@ function dumpObject(obj) {
 
 }
 
+/**
+ * Load the user's .xpcshell.el
+ *
+ * @author <a href="mailto:burton@peerfear.org">Kevin A. Burton</a>
+ */
+function loadDotFile() {
+
+    var file = Components.classes["@mozilla.org/file/local;1"]
+        .createInstance(Components.interfaces.nsILocalFile);
+
+    var currentProcess = Components.classes["@mozilla.org/process/util;1"]
+        .createInstance( Components.interfaces.nsIProcess );
+
+    var home = currentProcess.getEnvironment( 'HOME' );
+
+    var dotfile = home + "/.xpcshell.js";
+    
+    //init the file since we can't use a constructor in an XPCOM component
+    file.initWithPath( dotfile );
+
+    //make sure we have this file.
+    if ( file.exists() ) {
+
+        dump( "Loading " + dotfile + "...\n" );
+
+        load( dotfile );
+        
+        dump( "Loading " + dotfile + "...done\n" );
+
+    }
+    
+}
+
 var debugger_service = Components.classes["@mozilla.org/js/jsd/debugger-service;1"].getService();
 debugger_service = debugger_service.QueryInterface( Components.interfaces.jsdIDebuggerService );
 
@@ -254,3 +287,5 @@ debugger_service.debuggerHook = mde_executionhook;
 debugger_service.debugHook = mde_executionhook;
 debugger_service.interruptHook = mde_executionhook;
 debugger_service.throwHook = mde_executionhook;
+
+loadDotFile();
