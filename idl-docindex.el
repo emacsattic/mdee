@@ -101,6 +101,9 @@ load it."
    (let*((thing (concat (thing-at-point 'word) ".idl"))
          (entry (assoc thing idl-docindex--token-alist)))
 
+     (when entry
+       (setq entry (car entry)))
+     
      (list
       ;;we don't have an entry... use completion to find what we want from the token list.
       (completing-read "IDL name: "
