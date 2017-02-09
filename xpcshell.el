@@ -238,10 +238,6 @@ repeated prompts which is annoying (we really only want one)."
     (save-window-excursion
       (xpcshell))))
 
-;;add support for javascript mode style eval like in lisp-interaction-mode
-(when (boundp 'javascript-mode-map)
-  (define-key javascript-mode-map [?\C-c?\C-e] 'xpcshell-eval-buffer))
-
 ;;add ECB compilation buffer suppprt
 (when (boundp 'ecb-compilation-buffer-names)
   (add-to-list 'ecb-compilation-buffer-names (cons xpcshell-buffer-name nil)))
